@@ -1,0 +1,15 @@
+name: Test ARC Autoscaling
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: arc-runner-set
+    strategy:
+      matrix:
+        worker: [1, 2, 3]
+    steps:
+      - name: Run sample workload
+        run: |
+          echo "Running on self-hosted AKS pod: $(hostname)"
+          sleep 30
